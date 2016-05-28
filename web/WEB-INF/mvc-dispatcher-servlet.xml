@@ -9,7 +9,7 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
@@ -33,5 +33,9 @@
         <property name="sessionFactory" ref="sessionFactory" />
         <property name="dataSource" ref="dataSource"/>
     </bean>
+
+    <bean id="vegetableDao" class="com.infy.dao.VegetableDaoImpl"/>
+
+    <bean id="vegetableService" class="com.infy.service.VegetableServiceImpl"/>
 
 </beans>
