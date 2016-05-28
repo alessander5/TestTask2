@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="/WEB-INF/tld/functions.tld" prefix="utils" %>
 
 <html>
 <head>
@@ -20,7 +22,8 @@
 <body>
 <h1>Корзина</h1>
 
-<form>
+
+
   <fieldset>
     <table>
       <thead>
@@ -36,11 +39,12 @@
       <tfoot>
       <tr>
         <td colspan="50">
-          <button type="button" title="Продолжить покупки">
-            <span>Добавить еще одно наименование в корзину</span>
-          </button>
 
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <form action="addRandom" method="post">
+            <input type="submit" value="Добавить еще одно наименование в корзину"/>
+          </form>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
           <button type="button" title="Продолжить покупки">
             <span>Сделать заказ</span>
@@ -50,80 +54,29 @@
       </tfoot>
 
       <tbody>
-      <tr>
-        <td>Редиска</td>
-
-        <td>
-          <dl>
-            <dt><a href="#">Овощи и фрукты</a>&nbsp;&nbsp; &gt; &nbsp;&nbsp;</dt>
-            <dd><a href="#">Овощи</a></dd>
-          </dl>
-        </td>
-
-        <td>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>120</span><span> грн.</span>
-        </td>
-
-        <td>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input style="margin-top: -5px; text-align: center" title="Количество" type="number" min="1" maxlength="3" size="5" value="1" />
-        </td>
-
-        <td>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#" title="Удалить товар из корзины">Удалить товар</a>
-        </td>
-      </tr>
-
-      <tr>
-        <td>Арбуз</td>
-
-        <td>
-          <dl>
-            <dt><a href="#">Овощи и фрукты</a>&nbsp;&nbsp; &gt; &nbsp;&nbsp;</dt>
-            <dd><a href="#">Фрукты</a></dd>
-          </dl>
-        </td>
-
-        <td>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <span>150</span><span> грн.</span>
-        </td>
-
-        <td>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input style="margin-top: -5px; text-align: center" title="Количество" type="number" min="1" maxlength="3" size="5" value="2" />
-        </td>
-
-        <td>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="#" title="Удалить товар из корзины">Удалить товар</a>
-        </td>
-      </tr>
 
       <!-- My -->
 
-      <c:if test="${not empty vegetables}">
-          <c:forEach var="veg" items="${vegetables}">
+      <c:if test="${not empty basketItems}">
+          <c:forEach var="item" items="${basketItems}">
             <tr>
-              <td><c:out value="${veg.name}" /></td>
+              <td><c:out value="${item.name}" /></td>
 
               <td>
                 <dl>
                   <dt><a href="#">Овощи и фрукты</a>&nbsp;&nbsp; &gt; &nbsp;&nbsp;</dt>
-                  <dd><a href="#">${veg.category}</a></dd>
+                  <dd><a href="#">${item.category}</a></dd>
                 </dl>
               </td>
 
               <td>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>${veg.price}</span><span> грн.</span>
+                <span>${item.price}</span><span> грн.</span>
               </td>
 
               <td>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input style="margin-top: -5px; text-align: center" title="Количество" type="number" min="1" maxlength="3" size="5" value="2" />
+                <input style="margin-top: -5px; text-align: center" title="Количество" type="number" value="${item.count}"/>
               </td>
 
               <td>
@@ -137,6 +90,6 @@
       </tbody>
     </table>
   </fieldset>
-</form>
+
 </body>
 </html>
