@@ -1,8 +1,6 @@
 package com.infy.dao;
 
 import com.infy.domain.BasketItem;
-import com.infy.domain.Vegetable;
-import com.infy.service.IBasketItemService;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,8 +28,6 @@ public class MockBasketItemDaoImpl implements IBasketItemDao{
                 }
             }
         };
-
-
     }
 
     @Override
@@ -52,7 +48,6 @@ public class MockBasketItemDaoImpl implements IBasketItemDao{
         BasketItem returnValue = null;
         for (BasketItem iterator: currentBasketList)
             if(iterator.getId()==id) return iterator;
-
         return returnValue;
     }
 

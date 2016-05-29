@@ -24,30 +24,7 @@
   </script>
 
   <script type="text/javascript">
-    function doAjax() {
-
-      var inputFio = $("#fioInput").val();
-      var inputAddress= $("#addressInput").val();
-      var inputComment = $("#commentInput").val();
-
-      $.ajax({
-        url : 'addSubString',
-        type: 'GET',
-        dataType: 'json',
-        contentType: 'application/json',
-        mimeType: 'application/json',
-        data : ({
-          fio: inputFio,
-          address: inputAddress,
-          comment: inputComment
-        }),
-        success: function (data) {
-          document.getElementById("fioInput").value = data.fio;
-          document.getElementById("addressInput").value = data.address;
-          document.getElementById("commentInput").value = data.comment;
-        }
-      });
-    }
+    <jsp:include page = "js/scripts.js" flush = "true" />
   </script>
 </head>
 
@@ -64,7 +41,7 @@
     <div class="mandatory-field">
       <em>*</em>&nbsp;&nbsp;Номер телефона:
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input name="phone" value="" title="Номер телефона" type="text" placeholder="+38(0XX)XXX-XX-XX" onchange="checkTel()" >
+      <input name="phone" value="" title="Номер телефона" type="text" placeholder="+38(0XX)XXX-XX-XX" >
     </div>
 
     <br/>
@@ -135,7 +112,7 @@
 <button type="button" onclick="doAjax()" title="Подтвердить заказ"><span style="font-size: 20px">Подтвердить заказ</span></button>
 
 <br/><br/>
-<div style="display: none; color: red">Спасибо за покупку!</div>
+<div id ="showHide" style="display: none; color: red">Спасибо за покупку!</div>
 
 </body>
 </html>

@@ -17,14 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class OrderController {
 
-
     @Autowired
     private IBasketItemService basketItemService;
 
-
     @RequestMapping(value = "createOrder", method = RequestMethod.POST)
     public ModelAndView createOrder(ModelMap model) {
-        System.out.println("Create Order");
         ModelAndView returnView = new ModelAndView("order");
         returnView.addObject("basketItems", basketItemService.getCurrentBasketList());
         return returnView;
@@ -32,23 +29,11 @@ public class OrderController {
 
     @RequestMapping(value = "/addSubString", method = RequestMethod.GET)
     public @ResponseBody Response getCharNum(@RequestParam String fio, @RequestParam String address, @RequestParam String comment) {
-        System.out.println("Ajax");
-
         Response result = new Response();
-
         result.setFio("some_text + " + fio);
         result.setAddress("some_text + " + address);
         result.setComment("some_text + " + comment);
-
         return result;
     }
-
-    @RequestMapping(value = "test", method = RequestMethod.POST)
-    public ModelAndView test(ModelMap model) {
-        System.out.println("Test");
-        ModelAndView returnView = new ModelAndView("home");
-        return returnView;
-    }
-
 
 }

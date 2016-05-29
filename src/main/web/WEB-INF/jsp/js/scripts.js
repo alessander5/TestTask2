@@ -1,24 +1,25 @@
-	function checkFIO() {
-		var form = document.forms.orderForm;
-		var surname = form.elements.fio;
-		if (surname.value.length<5) {
-			document.getElementById('spanFIO').innerHTML = "Field 'FIO' must be longer than 5 chars";
-		}else{
-			document.getElementById('spanFIO').innerHTML = "";
+function doAjax() {
+
+	var inputFio = $("#fioInput").val();
+	var inputAddress= $("#addressInput").val();
+	var inputComment = $("#commentInput").val();
+
+	$.ajax({
+		url : 'addSubString',
+		type: 'GET',
+		dataType: 'json',
+		contentType: 'application/json',
+		mimeType: 'application/json',
+		data : ({
+			fio: inputFio,
+			address: inputAddress,
+			comment: inputComment
+		}),
+		success: function (data) {
+			document.getElementById("fioInput").value = data.fio;
+			document.getElementById("addressInput").value = data.address;
+			document.getElementById("commentInput").value = data.comment;
+			document.getElementById("showHide").style.display = "block";
 		}
-	}
-
-	function checkTel() {
-		var form = document.forms.orderForm;
-		var tel = form.elements.tel;
-		var re = /^\+\d{2}\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
-
-		if (!re.test(tel.value)){
-			document.getElementById('spanTel').innerHTML = "Field 'Tel' must be +xx(xxx)xxx-xx-xx  format";
-		}else{
-			document.getElementById('spanTel').innerHTML = "";
-		}
-	}
-
-
-
+	});
+}

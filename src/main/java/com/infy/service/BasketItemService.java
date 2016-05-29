@@ -1,7 +1,6 @@
 package com.infy.service;
 
 import com.infy.dao.IBasketItemDao;
-import com.infy.dao.IVegetableDao;
 import com.infy.domain.BasketItem;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,7 +13,6 @@ public class BasketItemService implements IBasketItemService {
 
     @Autowired
     private IBasketItemDao basketItemDao;
-
 
     @Override
     public Collection<BasketItem> getCurrentBasketList() {

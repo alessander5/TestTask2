@@ -21,9 +21,6 @@
 </head>
 <body>
 <h1>Корзина</h1>
-
-
-
   <fieldset>
     <table>
       <thead>
@@ -80,29 +77,16 @@
 
               <td>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <!--
-                <c:url var="deleteURL" value="remove">
-                  <c:param name="itemId" value="${item.id}"/>
-                </c:url>
-                <a href="<c:out value="${deleteURL}"/>Удалить</a>
-                -->
-
                 <form action="remove" method="POST">
                   <input type="submit" value="Удалить товар" />
                   <input id="itemId" name="itemId" type="hidden" value="${item.id}"/>
                 </form>
-
               </td>
             </tr>
           </c:forEach>
       </c:if>
-
       </tbody>
     </table>
   </fieldset>
-
-  <form action="test" method="POST">
-    <input type="submit" value="Ajax Test" />
-  </form>
 </body>
 </html>
