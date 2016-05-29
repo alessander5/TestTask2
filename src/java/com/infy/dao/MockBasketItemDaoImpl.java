@@ -16,8 +16,6 @@ public class MockBasketItemDaoImpl implements IBasketItemDao{
 
     private List<BasketItem> currentBasketList;
 
-    private List<Vegetable> localItems = new ArrayList<Vegetable>();
-
     {
         currentBasketList = new ArrayList<BasketItem>(){
             @Override
@@ -32,15 +30,30 @@ public class MockBasketItemDaoImpl implements IBasketItemDao{
                 }
             }
         };
-        currentBasketList.add(new BasketItem(new Vegetable("Редиска", "Овощи",120)));
-        currentBasketList.add(new BasketItem(new Vegetable("Арбуз","Фрукты",150)));
-        currentBasketList.add(new BasketItem(new Vegetable("Арбуз","Фрукты",150)));
+
 
     }
 
     @Override
     public Collection<BasketItem> getCurrentBasketList() {
         return currentBasketList;
+    }
+
+    @Override
+    public void removeItemById(int id) {
+        BasketItem findedById = getById(id);
+        if (findedById!=null)
+            currentBasketList.remove(findedById);
+        else
+            throw new IllegalArgumentException();
+    }
+
+    private BasketItem getById(int id){
+        BasketItem returnValue = null;
+        for (BasketItem iterator: currentBasketList)
+            if(iterator.getId()==id) return iterator;
+
+        return returnValue;
     }
 
 }

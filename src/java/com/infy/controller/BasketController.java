@@ -6,15 +6,12 @@ import com.infy.service.IBasketItemService;
 import com.infy.service.IVegetableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by Infy on 28.05.2016.
@@ -27,6 +24,7 @@ public class BasketController {
 
     @Autowired
     private IBasketItemService basketItemService;
+
 
     private Random randomInt = new Random();
 
@@ -49,6 +47,16 @@ public class BasketController {
         System.out.println("Index: " + index + " name:" + item.getName() + " count:" + item.getCount());
         basketItemService.getCurrentBasketList().add(item);
         model.addAttribute("basketItems", basketItemService.getCurrentBasketList());
+        return "basket";
+    }
+
+    @RequestMapping(value = "remove")
+    public String remove(@RequestParam("itemId") int id,
+                         Model model) {
+
+        basketItemService.removeItemById(id);
+        model.addAttribute("basketItems", basketItemService.getCurrentBasketList());
+        System.out.println("remove " + id);
         return "basket";
     }
 

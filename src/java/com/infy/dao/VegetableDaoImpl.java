@@ -1,5 +1,6 @@
 package com.infy.dao;
 
+import com.infy.domain.BasketItem;
 import com.infy.domain.Vegetable;
 import org.hibernate.Criteria;
 
@@ -30,6 +31,8 @@ public class VegetableDaoImpl extends ADao<Integer, Vegetable> implements IVeget
         Criteria criteria = createEntityCriteria();
         if(criteria.list().isEmpty()){
             System.out.println("Init empty db list");
+            saveOrUpdate(new Vegetable("Редиска", "Овощи",120));
+            saveOrUpdate(new Vegetable("Арбуз","Фрукты",150));
             saveOrUpdate(new Vegetable("Картошка", "Овощи",120));
             saveOrUpdate(new Vegetable("Вишня", "Вишня",120));
         };

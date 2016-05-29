@@ -10,5 +10,6 @@ import java.util.Collection;
 public interface IBasketItemService {
 
     Collection<BasketItem> getCurrentBasketList();
+    void removeItemById(int id);
 
 }

@@ -21,4 +21,8 @@ public class BasketItemService implements IBasketItemService {
         return basketItemDao.getCurrentBasketList();
     }
 
+    @Override
+    public void removeItemById(int id) {
+        basketItemDao.removeItemById(id);
+    }
 }

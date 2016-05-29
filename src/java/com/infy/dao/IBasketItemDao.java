@@ -11,4 +11,6 @@ public interface IBasketItemDao {
 
     Collection<BasketItem> getCurrentBasketList();
 
+    void removeItemById(int id);
+
 }

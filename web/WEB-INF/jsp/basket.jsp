@@ -75,12 +75,23 @@
 
               <td>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input style="margin-top: -5px; text-align: center" title="Количество" type="number" min="1" maxlength="3" size="5" value="${item.count}"/>
+                <input style=" text-align: center" title="Количество" type="number" value="${item.count}"/>
               </td>
 
               <td>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#" title="Удалить товар из корзины">Удалить товар</a>
+                <!--
+                <c:url var="deleteURL" value="remove">
+                  <c:param name="itemId" value="${item.id}"/>
+                </c:url>
+                <a href="<c:out value="${deleteURL}"/>Удалить</a>
+                -->
+
+                <form action="remove" method="POST">
+                  <input type="submit" value="Удалить товар" />
+                  <input id="itemId" name="itemId" type="hidden" value="${item.id}"/>
+                </form>
+
               </td>
             </tr>
           </c:forEach>

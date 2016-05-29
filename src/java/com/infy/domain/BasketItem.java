@@ -6,6 +6,7 @@ package com.infy.domain;
 public class BasketItem extends Vegetable{
 
     public BasketItem(Vegetable vegetable){
+        setId(vegetable.getId());
         setName(vegetable.getName());
         setCategory(vegetable.getCategory());
         setPrice(vegetable.getPrice());
