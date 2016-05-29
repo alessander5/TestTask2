@@ -45,7 +45,7 @@
         </td>
 
         <td>
-          <form action="addRandom" method="post">
+          <form action="createOrder" method="post">
             <input type="submit" value="Сделать заказ" title="Продолжить покупки"/>
           </form>
         </td>

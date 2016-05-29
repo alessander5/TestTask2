@@ -7,9 +7,9 @@
     <uri>http://nt/utils</uri>
     
     <function>
-        <name>getCount</name>
+        <name>getTotalPrice</name>
         <function-class>com.infy.function.Utils</function-class>
-        <function-signature>int getCount(java.util.Collection,com.infy.domain.Vegetable)</function-signature>
+        <function-signature>int getTotalPrice(java.util.Collection)</function-signature>
     </function>
 
 

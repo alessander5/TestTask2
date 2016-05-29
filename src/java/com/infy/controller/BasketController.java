@@ -63,7 +63,7 @@ public class BasketController {
     public String addRandomItem(ModelMap model) {
         System.out.println("Add random item");
         List<Vegetable> list = vegetableService.getList();
-        if(list.isEmpty())        list.addAll(localItems);
+        if(list.isEmpty())  list.addAll(localItems);
         int index = randomInt.nextInt(list.size());
         BasketItem item = new BasketItem(list.get(index));
         System.out.println("Index: " + index + " name:" + item.getName() + " count:" + item.getCount());
@@ -71,5 +71,14 @@ public class BasketController {
         model.addAttribute("basketItems", currentBasketList);
         return "basket";
     }
+
+    @RequestMapping(value = "createOrder", method = RequestMethod.POST)
+    public ModelAndView createOrder(ModelMap model) {
+        System.out.println("Create Order");
+        ModelAndView returnView = new ModelAndView("order");
+        returnView.addObject("basketItems", currentBasketList);
+        return returnView;
+    }
+
 
 }

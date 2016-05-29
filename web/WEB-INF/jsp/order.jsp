@@ -5,7 +5,11 @@
   Time: 11:14
   To change this template use File | Settings | File Templates.
 --%>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="/WEB-INF/tld/functions.tld" prefix="utils" %>
+
 <html>
 <head>
   <title>Заказ</title>
@@ -82,10 +86,20 @@
 <div>
   <table>
     <th><strong>Данные по заказу:</strong></th>
-    <tr><td>Редиска</td><td><span>1</span>шт.</td></tr>
-    <tr><td>Арбуз</td><td><span>2</span>шт.</td></tr>
+    <c:forEach var="item" items="${basketItems}">
+      <tr>
+        <td><c:out value="${item.name}"/></td>
+        <td><c:out value="${item.count}шт."/></td></td>
+
+
+    </c:forEach>
+    <tr>
+      <td><strong>Общая сумма заказа:</strong></td>
+      <td><strong><span>${utils:getTotalPrice(basketItems)}</span>грн.</strong></td>
+  </tr>
   </table>
-  <strong>Общая сумма заказа: &nbsp;&nbsp;&nbsp;&nbsp; <span>420</span>грн.</strong>
+
+
 </div>
 
 <br/>
