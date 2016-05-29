@@ -28,7 +28,11 @@ public class VegetableDaoImpl extends ADao<Integer, Vegetable> implements IVeget
     @Override
     public List<Vegetable> getList() {
         Criteria criteria = createEntityCriteria();
-        //criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);//To avoid duplicates.
+        if(criteria.list().isEmpty()){
+            System.out.println("Init empty db list");
+            saveOrUpdate(new Vegetable("Картошка", "Овощи",120));
+            saveOrUpdate(new Vegetable("Вишня", "Вишня",120));
+        };
         return criteria.list();
     }
 }

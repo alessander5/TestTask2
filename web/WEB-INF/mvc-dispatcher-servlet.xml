@@ -35,7 +35,9 @@
     </bean>
 
     <bean id="vegetableDao" class="com.infy.dao.VegetableDaoImpl"/>
+    <bean id="basketItemDao" class="com.infy.dao.MockBasketItemDaoImpl"/>
 
     <bean id="vegetableService" class="com.infy.service.VegetableServiceImpl"/>
+    <bean id="basketItemsService" class="com.infy.service.BasketItemService"/>
 
 </beans>

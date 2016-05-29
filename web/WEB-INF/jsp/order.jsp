@@ -90,13 +90,13 @@
       <tr>
         <td><c:out value="${item.name}"/></td>
         <td><c:out value="${item.count}шт."/></td></td>
-
+      </tr>
 
     </c:forEach>
     <tr>
       <td><strong>Общая сумма заказа:</strong></td>
       <td><strong><span>${utils:getTotalPrice(basketItems)}</span>грн.</strong></td>
-  </tr>
+    </tr>
   </table>
 
 
