@@ -18,24 +18,34 @@
   <meta http-equiv="content-language" content="ru">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
+
+  <script type="text/javascript">
+    <jsp:include page = "js/scripts.js" flush = "true" />
+
+    $(document).ready(function() {
+      $("#test").click(function(){
+        $.get("/test/ajaxtest",function(data,status){
+          alert("Data: " + data + "\nStatus: " + status);
+        });
+      });
+    });
+  </script>
 </head>
 
 <body>
-
 <h2>Данные клиента</h2>
-<form enctype="multipart/form-data;charset=UTF-8">
+<form action="order" name="orderForm" method="post">
   <fieldset class="highlight">
     <div class="mandatory-field">
       <em>*</em>&nbsp;&nbsp;ФИО:
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input name="fio" value="" title="ФИО" maxlength="255" type="text">
+      <input name="fio" value="" title="ФИО" maxlength="255" type="text" onchange="checkFIO()">
     </div>
-
     <br/>
     <div class="mandatory-field">
       <em>*</em>&nbsp;&nbsp;Номер телефона:
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input name="phone" value="" title="Номер телефона" type="text" placeholder="+38(0XX)XXX-XX-XX">
+      <input name="phone" value="" title="Номер телефона" type="text" placeholder="+38(0XX)XXX-XX-XX" onchange="checkTel()" >
     </div>
 
     <br/>
@@ -107,6 +117,9 @@
 
 <br/><br/>
 <div style="display: none; color: red">Спасибо за покупку!</div>
+
+
+<pre><span id="spanFIO"></span></pre>
 
 </body>
 </html>
