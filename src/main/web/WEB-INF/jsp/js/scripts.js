@@ -8,11 +8,11 @@
 		}
 	}
 
-	function checkTel() { 
+	function checkTel() {
 		var form = document.forms.orderForm;
 		var tel = form.elements.tel;
 		var re = /^\+\d{2}\(\d{3}\)\d{3}-\d{2}-\d{2}$/;
-		
+
 		if (!re.test(tel.value)){
 			document.getElementById('spanTel').innerHTML = "Field 'Tel' must be +xx(xxx)xxx-xx-xx  format";
 		}else{
@@ -21,4 +21,4 @@
 	}
 
 
-	
+

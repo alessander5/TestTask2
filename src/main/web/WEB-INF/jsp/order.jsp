@@ -19,15 +19,34 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
 
+  <script type="text/JavaScript"
+          src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js">
+  </script>
+
   <script type="text/javascript">
-    function checkFIO() {
-      var form = document.forms.orderForm;
-      var surname = form.elements.fio;
-      if (surname.value.length<5) {
-        document.getElementById('spanFIO').innerHTML = "Field 'FIO' must be longer than 5 chars";
-      }else{
-        document.getElementById('spanFIO').innerHTML = "";
-      }
+    function doAjax() {
+
+      var inputFio = $("#fioInput").val();
+      var inputAddress= $("#addressInput").val();
+      var inputComment = $("#commentInput").val();
+
+      $.ajax({
+        url : 'addSubString',
+        type: 'GET',
+        dataType: 'json',
+        contentType: 'application/json',
+        mimeType: 'application/json',
+        data : ({
+          fio: inputFio,
+          address: inputAddress,
+          comment: inputComment
+        }),
+        success: function (data) {
+          document.getElementById("fioInput").value = data.fio;
+          document.getElementById("addressInput").value = data.address;
+          document.getElementById("commentInput").value = data.comment;
+        }
+      });
     }
   </script>
 </head>
@@ -39,7 +58,7 @@
     <div class="mandatory-field">
       <em>*</em>&nbsp;&nbsp;ФИО:
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input name="fio" value="" title="ФИО" maxlength="255" type="text" onchange="checkFIO()">
+      <input id="fioInput" name="fio" value="" title="ФИО" maxlength="255" type="text">
     </div>
     <br/>
     <div class="mandatory-field">
@@ -67,7 +86,7 @@
     <div class="mandatory-field">
       <em>*cond*</em>&nbsp;&nbsp;Ваш адрес:
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <input title="Адрес" name="address" value="" type="text" style="width: 400px;">
+      <input title="Адрес" id="addressInput" name="address" value="" type="text" style="width: 400px;">
     </div>
 
     <br/>
@@ -81,7 +100,7 @@
 
     <br/>
     <div>&nbsp;&nbsp;&nbsp;&nbsp;Комментарий: <br/>
-      &nbsp;&nbsp;&nbsp;&nbsp;<textarea value="" title="Комментарий" style="width:400px; height:40px"></textarea>
+      &nbsp;&nbsp;&nbsp;&nbsp;<textarea id="commentInput" value="" title="Комментарий" style="width:400px; height:40px"></textarea>
     </div>
 
     <div class="mandatory-field">
@@ -113,13 +132,10 @@
 </div>
 
 <br/>
-<button type="button" title="Подтвердить заказ"><span style="font-size: 20px">Подтвердить заказ</span></button>
+<button type="button" onclick="doAjax()" title="Подтвердить заказ"><span style="font-size: 20px">Подтвердить заказ</span></button>
 
 <br/><br/>
 <div style="display: none; color: red">Спасибо за покупку!</div>
-
-
-<pre><span id="spanFIO"></span></pre>
 
 </body>
 </html>

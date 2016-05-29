@@ -30,16 +30,15 @@ public class OrderController {
         return returnView;
     }
 
-    @RequestMapping(value = "/getCharNum", method = RequestMethod.GET)
-    public @ResponseBody Response getCharNum(@RequestParam String text) {
+    @RequestMapping(value = "/addSubString", method = RequestMethod.GET)
+    public @ResponseBody Response getCharNum(@RequestParam String fio, @RequestParam String address, @RequestParam String comment) {
+        System.out.println("Ajax");
 
         Response result = new Response();
 
-        System.out.println("Ajax");
-        if (text != null) {
-            result.setText(text);
-            result.setCount(text.length());
-        }
+        result.setFio("some_text + " + fio);
+        result.setAddress("some_text + " + address);
+        result.setComment("some_text + " + comment);
 
         return result;
     }

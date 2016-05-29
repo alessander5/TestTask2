@@ -4,22 +4,32 @@ package com.infy.domain;
  * Created by Infy on 29.05.2016.
  */
 public class Response {
-    public String getText() {
-        return text;
+    String fio;
+    String address;
+    String comment;
+
+    public String getFio() {
+        return fio;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setFio(String fio) {
+        this.fio = fio;
     }
 
-    public int getCount() {
-        return count;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    String text;
-    int count;
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
 }

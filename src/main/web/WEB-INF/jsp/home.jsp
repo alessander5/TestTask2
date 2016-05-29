@@ -11,21 +11,25 @@
   <script type="text/javascript">
     function doAjax() {
 
-      var inputText = $("#input_str").val();
+      var inputFio = $("#fioInput").val();
+      var inputAddress= $("#addressInput").val();
+      var inputComment = $("#commentInput").val();
 
       $.ajax({
-        url : 'getCharNum',
+        url : 'addSubString',
         type: 'GET',
         dataType: 'json',
         contentType: 'application/json',
         mimeType: 'application/json',
         data : ({
-          text: inputText
+          fio: inputFio,
+          address: inputAddress,
+          comment: inputComment
         }),
         success: function (data) {
-
-          var result = '"'+data.text+'", '+data.count+' characters';
-          $("#result_text").text(result);
+          document.getElementById("fioInput").value = data.fio;
+          document.getElementById("addressInput").value = data.address;
+          document.getElementById("commentInput").value = data.comment;
         }
       });
     }
@@ -33,8 +37,9 @@
 </head>
 <body>
 <h3>Enter text:</h3>
-<input id="input_str" type="text">
+<input id="fioInput" placeholder="fio" type="text">
+<input id="addressInput" placeholder="address" type="text">
+<input id="commentInput" placeholder="comment" type="text">
 <input type="button" value="OK" onclick="doAjax()">
-<p id="result_text">Test</p>
 </body>
 </html>
