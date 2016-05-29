@@ -38,17 +38,16 @@
 
       <tfoot>
       <tr>
-        <td colspan="50">
-
+        <td>
           <form action="addRandom" method="post">
-            <input type="submit" value="Добавить еще одно наименование в корзину"/>
+            <input type="submit" value="Добавить еще одно наименование в корзину" title="Продолжить покупки"/>
           </form>
+        </td>
 
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-          <button type="button" title="Продолжить покупки">
-            <span>Сделать заказ</span>
-          </button>
+        <td>
+          <form action="addRandom" method="post">
+            <input type="submit" value="Сделать заказ" title="Продолжить покупки"/>
+          </form>
         </td>
       </tr>
       </tfoot>

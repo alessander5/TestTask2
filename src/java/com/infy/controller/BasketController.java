@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,6 +25,8 @@ public class BasketController {
     private IVegetableService vegetableService;
 
     private List<BasketItem> currentBasketList;
+
+    private List<Vegetable> localItems = new ArrayList<Vegetable>();
 
     private Random randomInt = new Random();
 
@@ -44,6 +47,9 @@ public class BasketController {
         currentBasketList.add(new BasketItem(new Vegetable("Редиска", "Овощи",120)));
         currentBasketList.add(new BasketItem(new Vegetable("Арбуз","Фрукты",150)));
         currentBasketList.add(new BasketItem(new Vegetable("Арбуз","Фрукты",150)));
+
+        localItems.add(new Vegetable("Картошка(db is empty)", "Овощи",120));
+        localItems.add(new Vegetable("Вишня(db is empty)", "Вишня",120));
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -57,26 +63,13 @@ public class BasketController {
     public String addRandomItem(ModelMap model) {
         System.out.println("Add random item");
         List<Vegetable> list = vegetableService.getList();
+        if(list.isEmpty())        list.addAll(localItems);
         int index = randomInt.nextInt(list.size());
         BasketItem item = new BasketItem(list.get(index));
         System.out.println("Index: " + index + " name:" + item.getName() + " count:" + item.getCount());
         currentBasketList.add(item);
         model.addAttribute("basketItems", currentBasketList);
         return "basket";
-    }
-
-    @RequestMapping(value = "index", method = RequestMethod.GET)
-    public String print(ModelMap model) {
-        System.out.println("start1");
-        model.addAttribute("message", "Hello world!");
-        return "index";
-    }
-
-    @RequestMapping(value = "hello", method = RequestMethod.POST)
-    public String enterHelloJSP(ModelMap model) {
-        System.out.println("hello");
-        model.addAttribute("message", "Hello world!");
-        return "hello";
     }
 
 }
