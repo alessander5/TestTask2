@@ -20,15 +20,15 @@
   <meta charset="utf-8">
 
   <script type="text/javascript">
-    <jsp:include page = "js/scripts.js" flush = "true" />
-
-    $(document).ready(function() {
-      $("#test").click(function(){
-        $.get("/test/ajaxtest",function(data,status){
-          alert("Data: " + data + "\nStatus: " + status);
-        });
-      });
-    });
+    function checkFIO() {
+      var form = document.forms.orderForm;
+      var surname = form.elements.fio;
+      if (surname.value.length<5) {
+        document.getElementById('spanFIO').innerHTML = "Field 'FIO' must be longer than 5 chars";
+      }else{
+        document.getElementById('spanFIO').innerHTML = "";
+      }
+    }
   </script>
 </head>
 

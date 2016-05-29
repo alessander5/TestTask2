@@ -2,9 +2,9 @@
 		var form = document.forms.orderForm;
 		var surname = form.elements.fio;
 		if (surname.value.length<5) {
-			document.getElementById('spanSurname').innerHTML = "Field 'FIO' must be longer than 5 chars";
+			document.getElementById('spanFIO').innerHTML = "Field 'FIO' must be longer than 5 chars";
 		}else{
-			document.getElementById('spanSurname').innerHTML = "";
+			document.getElementById('spanFIO').innerHTML = "";
 		}
 	}
 
@@ -19,4 +19,6 @@
 			document.getElementById('spanTel').innerHTML = "";
 		}
 	}
+
+
 	

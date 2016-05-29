@@ -101,5 +101,8 @@
     </table>
   </fieldset>
 
+  <form action="test" method="POST">
+    <input type="submit" value="Ajax Test" />
+  </form>
 </body>
 </html>
