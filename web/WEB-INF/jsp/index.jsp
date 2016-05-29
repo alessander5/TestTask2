@@ -20,17 +20,9 @@
 <body>
 <h1>Корзина</h1>
 
-<form>
-  <fieldset>
-    <tbody>
-    <ul>
-      <c:forEach var="vegetable" items="${vegetables}">
-        <li>
-          <td><c:out value="${vegetable}" /></td>
-        </li>
-      </c:forEach>
-    </ul>
-  </fieldset>
+<form action="hello" method="get">
+  <input type="hidden" name="id" /> <input type="submit" value="add" />
 </form>
+
 </body>
 </html>

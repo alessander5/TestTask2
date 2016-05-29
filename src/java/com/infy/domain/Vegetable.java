@@ -63,4 +63,16 @@ public class Vegetable {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Vegetable){
+            Vegetable vegetable = (Vegetable)obj;
+            if (getName().equals(vegetable.getName()) &&
+                getCategory().equals(vegetable.getCategory()) &&
+                getPrice() == vegetable.getPrice())
+                    return true;
+        }
+        return false;
+    }
 }

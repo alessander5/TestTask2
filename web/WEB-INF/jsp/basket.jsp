@@ -76,7 +76,7 @@
 
               <td>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input style="margin-top: -5px; text-align: center" title="Количество" type="number" value="${item.count}"/>
+                <input style="margin-top: -5px; text-align: center" title="Количество" type="number" min="1" maxlength="3" size="5" value="${item.count}"/>
               </td>
 
               <td>
