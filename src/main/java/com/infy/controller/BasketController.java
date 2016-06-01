@@ -31,7 +31,7 @@ public class BasketController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String startPage(ModelMap model) {
         model.addAttribute("basketItems", basketItemService.getCurrentBasketList());
-        return "basket";
+        return "index";
     }
 
     @RequestMapping(value = "addRandom", method = RequestMethod.POST)
@@ -41,7 +41,7 @@ public class BasketController {
         BasketItem item = new BasketItem(list.get(index));
         basketItemService.getCurrentBasketList().add(item);
         model.addAttribute("basketItems", basketItemService.getCurrentBasketList());
-        return "basket";
+        return "index";
     }
 
     @RequestMapping(value = "remove")
@@ -50,7 +50,7 @@ public class BasketController {
         basketItemService.removeItemById(id);
         model.addAttribute("basketItems", basketItemService.getCurrentBasketList());
         System.out.println("remove " + id);
-        return "basket";
+        return "index";
     }
 
 }

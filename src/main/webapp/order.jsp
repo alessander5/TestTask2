@@ -19,12 +19,13 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
 
-  <script type="text/JavaScript"
-          src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js">
+
+  <script type="text/javascript">
+    <jsp:include page = "WEB-INF/jsp/js/jquery-1.9.1.min.js" flush = "true" />
   </script>
 
   <script type="text/javascript">
-    <jsp:include page = "js/scripts.js" flush = "true" />
+    <jsp:include page = "WEB-INF/jsp/js/scripts.js" flush = "true" />
   </script>
 </head>
 
