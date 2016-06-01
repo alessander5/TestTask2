@@ -49,7 +49,6 @@ public class BasketController {
                          Model model) {
         basketItemService.removeItemById(id);
         model.addAttribute("basketItems", basketItemService.getCurrentBasketList());
-        System.out.println("remove " + id);
         return "index";
     }
 

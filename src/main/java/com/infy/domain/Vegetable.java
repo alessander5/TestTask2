@@ -1,25 +1,13 @@
 package com.infy.domain;
 
-import javax.persistence.*;
-
 /**
  * Created by Infy on 28.05.2016.
  */
 
-@Entity
-@Table(name="vegetable", schema = "public")
 public class Vegetable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    @Column(unique = true, nullable = false)
     private String name;
-
-    @Column(nullable = false)
     private String category;
-
-    @Column(nullable = false)
     private int price;
 
     public Vegetable(){
@@ -27,6 +15,13 @@ public class Vegetable {
     }
 
     public Vegetable(String name, String category, int price){
+        setName(name);
+        setCategory(category);
+        setPrice(price);
+    }
+
+    public Vegetable(int id, String name, String category, int price){
+        setId(id);
         setName(name);
         setCategory(category);
         setPrice(price);
